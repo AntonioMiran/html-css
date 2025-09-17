@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>links</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a {
+            text-decoration: none;
+            color: rgb(47, 0, 255);
+
+        }
+        
+        a:visited {
+            /* Significa que escolher a cor do site dos links*/
+            color: rgb(168, 8, 21);
+        }
+        a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+        a:active {
+            /*Significa que ao clicar no link ele escolhe a cor escolhida*/
+            color: rgb(42, 165, 97);
+            
+        }
+        .especial::before{
+            content: ' » ' ;
+
+        }
+        .especial::after {
+            content: ' « ';
+        }
+    </style>
+</head>
+<body>
+    <h1>Personalisando links</h1>
+    <ul>
+        <li><a href="https://www.youtube.com/watch?v=BQfPiOGFkLU&ab_channel=AmberDrift">Canal do YouTube</a></li>
+        <li><a href="https://doramasonline.org/br/episodio/study-group-temporada-1-episodio-7/" class="especial">Site de filme Study Group</a></li>
+        <li><a href="https://expansao.co.ao/" class="especial">Site Jornal expansão</a></li>
+    </ul>
+    
+</body>
+</html>

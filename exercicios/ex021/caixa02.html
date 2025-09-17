@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gruping Tags</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(228, 220, 220);
+        }
+
+        header {
+            background-color: white;
+            padding: 10px;
+            margin: 2px;
+        }
+        nav{
+            background-color: rgb(55, 58, 58);
+            padding: 2px;
+            box-shadow: 6px 7px 7px 5px rgb(106, 107, 107);
+        }
+        nav > a {
+            text-decoration: none;
+            color: rgb(124, 118, 118);
+            margin-right: 20px;
+            font-weight: bold;
+            
+        }
+        nav > a:hover{
+            text-decoration: underline;
+            
+        }
+        main {
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            margin: 2px;
+            border-radius: 10px 0px;
+            box-shadow: 6px 7px 7px 5px rgb(106, 107, 107);;
+        }
+
+        article {
+            background-color: grey;
+            padding: 5px;
+            border-radius: 20px;
+
+        }
+        article > aside {
+            background-color: rgb(204, 204, 204);
+
+        }
+
+        footer {
+            background-color: rgb(2, 2, 2);
+            color: antiquewhite;
+            text-align: center;
+            padding: 4px;
+            margin: 2px;
+        }
+
+        footer > p{
+            margin: 0px;
+        }
+        div#bola{
+            background-color: pink;
+            text-align:center;
+            height: 100px;
+            width: 100px;
+            margin: 15px;
+            border-radius: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meu site</h1>
+        <nav>
+            <a href="#">Link</a>
+            <a href="#">Link</a>
+        </nav> 
+    </header>
+    <main>
+        <section id="assuntos">
+            <p>Esportes e Politica </p>
+
+        </section>
+        <section id="noticias">
+            <article>
+                <h2>Noticias sobre Angola</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas minus dignissimos quisquam vero vel quis aut sequi nesciunt, ea accusamus temporibus voluptatibus, natus provident perspiciatis corrupti vitae officiis laboriosam. Delectus.</p>
+                <aside>
+                    <p>Artigo escrito por António Miranda</p>
+                </aside>
+
+            </article>
+
+        </section>
+
+    </main>
+    <footer>
+        <p>Desenvolvido por Miranda</p>
+    </footer>
+    <div id="bola">a </div>
+    
+</body>
+</html>

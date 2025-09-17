@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patsol - Moda Feminina</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=SEU_CLIENT_ID_PAYPAL&currency=USD"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- Hero -->
+  <section class="relative bg-pink-100 min-h-screen flex items-center justify-center text-center">
+    <div class="p-6">
+      <h1 class="text-5xl font-bold mb-4">✨ Patsol Moda Feminina ✨</h1>
+      <p class="text-lg mb-6">Elegância e estilo para todas as ocasiões</p>
+      <a href="" class="px-6 py-3 bg-pink-500 text-white rounded-2xl hover:bg-pink-600 transition shadow-lg">
+        Ver Coleção
+      </a>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent"></div>
+  </section>
+
+  <!-- Produtos -->
+  <section id="produtos" class="py-16 px-6 bg-white">
+    <h2 class="text-3xl font-bold text-center mb-10">Coleção Destaque</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+      <!-- Card Produto -->
+      <div class="bg-pink-50 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
+        <img src="imagens/branco1.jpg" alt="Fato branco" class="w-full h-80 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="text-xl font-semibold">Fato Branco Elegante</h3>
+          <p class="text-pink-600 font-bold mt-2">39.990 Kz</p>
+          <button onclick="addToCart('Fato Branco Elegante', 39990)" class="mt-4 px-4 py-2 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </div>
+
+      <!-- Outro Produto -->
+      <div class="bg-pink-50 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
+        <img src="imagens/beige1.jpg" alt="Fato bege" class="w-full h-80 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="text-xl font-semibold">Fato Bege Elegante</h3>
+          <p class="text-pink-600 font-bold mt-2">25.990 Kz</p>
+          <button onclick="addToCart('Fato Bege Elegante', 25990)" class="mt-4 px-4 py-2 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </div>
+
+      <!-- Outro Produto -->
+      <div class="bg-pink-50 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
+        <img src="imagens/verde1.jpg" alt="Fato verde" class="w-full h-80 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="text-xl font-semibold">Fato Verde Clássico</h3>
+          <p class="text-pink-600 font-bold mt-2">24.990 Kz</p>
+          <button onclick="addToCart('Fato Verde Clássico', 24990)" class="mt-4 px-4 py-2 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Carrinho e Pagamento -->
+  <section id="checkout" class="bg-pink-100 py-16 text-center">
+    <h2 class="text-3xl font-bold mb-6">Carrinho de Compras</h2>
+    <ul id="cart-items" class="mb-4 text-lg"></ul>
+    <p class="text-xl font-semibold mb-6">Total: <span id="cart-total">0</span> Kz</p>
+
+    <!-- Bandeiras -->
+    <p class="mb-4 font-medium">Aceitamos:</p>
+    <div class="flex justify-center gap-4 mb-6">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" class="h-10">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Mastercard_logo.png" alt="Mastercard" class="h-10">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_%282018%29.svg" alt="Amex" class="h-10">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="h-10">
+    </div>
+
+    <!-- Botão do PayPal -->
+    <div id="paypal-button-container"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 text-center">
+    <p>&copy; 2025 Patsol - Moda Feminina. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Script Carrinho + PayPal -->
+  <script>
+    let cart = [];
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+    }
+
+    function updateCart() {
+      let cartList = document.getElementById("cart-items");
+      let total = 0;
+      cartList.innerHTML = "";
+      cart.forEach(item => {
+        let li = document.createElement("li");
+        li.textContent = `${item.name} - ${item.price} Kz`;
+        cartList.appendChild(li);
+        total += item.price;
+      });
+      document.getElementById("cart-total").textContent = total;
+    }
+
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        let total = cart.reduce((sum, item) => sum + item.price, 0);
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: (total / 1000).toFixed(2) } // ajuste da moeda
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Compra concluída por ' + details.payer.name.given_name);
+          cart = [];
+          updateCart();
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
+
+</body>
+</html>

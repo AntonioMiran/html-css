@@ -1,0 +1,13 @@
+@charset  "UTF-8";
+ body{
+            background-color: rgb(150, 119, 54);
+        }
+        h1{
+            background-color: aqua;
+            width: 300px;
+            text-align: center;
+            
+        }
+        ul{
+            color: greenyellow;
+        }
