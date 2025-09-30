@@ -10,6 +10,7 @@
         }
 
         table {
+            
             border-collapse: collapse;
             width: 500px;  
         }
@@ -21,10 +22,16 @@
 
         thead, tfoot {
             background-color: rgb(68, 105, 185);
+            
+        }
+        tbody > tr:nth-child(even) {
+            color: white;
+            background-color: rgb(124, 4, 4);
+
         }
         td.num {
             text-align: right;
-
+            background-color: green;
         }
     </style>
 
