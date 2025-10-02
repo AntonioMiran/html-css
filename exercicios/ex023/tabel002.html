@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabelas</title>
     <style>
+
+
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
@@ -24,21 +26,26 @@
             background-color: rgb(68, 105, 185);
             
         }
+
+         thead  {
+            position: sticky;
+            top: 0;
+            
+        }
+
         tbody > tr:nth-child(even) {
             color: white;
             background-color: rgb(124, 4, 4);
 
         }
+
+
         td.num {
             text-align: right;
             background-color: green;
         }
 
-        thead > tr > tr {
-            position: sticky;
-            top: 0;
-            background-color: antiquewhite;
-        }
+       
     </style>
 
 </head>
@@ -118,6 +125,7 @@
             </tr>
         </tfoot>
     </table>
+
     
 </body>
 </html>
